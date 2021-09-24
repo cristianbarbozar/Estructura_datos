@@ -5,6 +5,8 @@
  */
 package estrucura_de_datos;
 
+import java.io.*;
+
 /**
  *
  * @author CBR19
@@ -34,7 +36,7 @@ public class Arrayt {
     public void to_string() {
         for (int i = 0; i < arreglo.length; i++) {
             System.out.print(arreglo[i] + ",");
-            
+
         }
         System.out.println("");
     }
@@ -42,21 +44,39 @@ public class Arrayt {
     public int getLenght() {
         int x = arreglo.length;
         return x;
-        
+
     }
-    public void setItem ( int dato ,int index){
-    arreglo[index]=dato;
-    
+
+    public void setItem(int dato, int index) {
+        arreglo[index] = dato;
+
     }
-    public void setclear(int entero){
-        for (int i = 0; i <arreglo.length; i++) {
-           arreglo[i]=5;
-            
+
+    public void setclear(int entero) {
+        for (int i = 0; i < arreglo.length; i++) {
+            arreglo[i] = 5;
+
         }
+    }
+
+    public String leer(String direccion) {
+        String texto = "";
+        try {
+            BufferedReader bf = new BufferedReader(new FileReader(direccion));
+            String tem = "";
+            String bfread;
+            while ((bfread = bf.readLine()) != null) {
+                tem = tem + bf;
             }
+            texto = tem;
+        } catch (Exception e) {
+        }
+        return texto;
+    }
 
     public static void main(String[] args) {
-        Arrayt arreglo = new Arrayt();
+    
+         Arrayt arreglo = new Arrayt();
         arreglo.init(5);
         System.out.println(arreglo.getLenght());
         arreglo.to_string();
@@ -67,9 +87,11 @@ public class Arrayt {
         
         arreglo.setclear(5);
         arreglo.to_string();
-        
 
+  File archivo=new File("junio.dat");
+        System.out.println(archivo);
+ Arrayt arch= new Arrayt();
+          arch.leer("C:\\Users\\CBR19\\Desktop\\Estrucura_de_datos\\junio.dat");
     }
 
 }
-
